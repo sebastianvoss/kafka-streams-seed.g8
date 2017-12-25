@@ -22,7 +22,7 @@ object $appname$ extends App with LazyLogging {
 
   builder
     .stream[String, String]("topic1", Consumed.`with`(stringSerde, stringSerde, null, null))
-    .foreach((k, v) => logger.info(s"key: $k, value: $v"))
+    .foreach((k, v) => logger.info(s"key: \$k, value: \$v"))
 
   val topology = builder.build()
 
