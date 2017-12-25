@@ -1,5 +1,11 @@
 import sbt._
 
 object Dependencies {
-  lazy val scalaTest = "org.scalatest" %% "scalatest" % "3.0.3"
+
+  val kafkaVersion = "1.0.0"
+
+  val kafka = "org.apache.kafka" % "kafka-streams" % kafkaVersion
+
+  val backendDependencies = Seq(kafka)
+
 }
