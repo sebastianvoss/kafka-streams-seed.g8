@@ -1,12 +1,11 @@
-This is a [Giter8][g8] template for Scala
+This is a [Giter8][g8] template for Kafka Streams
 
 ```
-sbt new scala/scala-seed.g8
+sbt new sebastianvoss/kafka-streams-seed.g8
 ```
 
 License
 -------
-Written in 2016 by Lightbend, Inc.
 To the extent possible under law, the author(s) have dedicated all copyright and related and neighboring rights to
 this template to the public domain worldwide. This template is distributed without any warranty.
 See <http://creativecommons.org/publicdomain/zero/1.0/>.
