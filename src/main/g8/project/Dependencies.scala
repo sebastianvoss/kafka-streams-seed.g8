@@ -2,10 +2,14 @@ import sbt._
 
 object Dependencies {
 
-  val kafkaVersion = "1.0.0"
-  val cirisVersion = "0.5.0"
+  val kafkaVersion        = "1.0.0"
+  val cirisVersion        = "0.5.0"
+  val scalaLoggingVersion = "3.7.2"
+  val logbackVersion      = "1.2.3"
 
-  val kafka = "org.apache.kafka" % "kafka-streams" % kafkaVersion
+  val kafka        = "org.apache.kafka"           % "kafka-streams"   % kafkaVersion
+  val scalaLogging = "com.typesafe.scala-logging" %% "scala-logging"  % scalaLoggingVersion
+  val logback      = "ch.qos.logback"             % "logback-classic" % logbackVersion
 
   val ciris = Seq(
     "is.cir" %% "ciris-core",
@@ -16,6 +20,6 @@ object Dependencies {
     "is.cir" %% "ciris-squants"
   ).map(_ % cirisVersion)
 
-  val backendDependencies = Seq(kafka) ++ ciris
+  val backendDependencies = Seq(kafka, scalaLogging, logback) ++ ciris
 
 }
