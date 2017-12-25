@@ -4,7 +4,7 @@ organization := "com.sebastianvoss"
 scalaVersion := "2.12.4"
 name := "$name$"
 
-libraryDependencies ++= backendDependencies
+libraryDependencies ++= backendDependencies ++ testDependencies
 
 scalafmtOnCompile := true
 

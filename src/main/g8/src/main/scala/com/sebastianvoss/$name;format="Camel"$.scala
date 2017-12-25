@@ -7,7 +7,6 @@ import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.streams.{Consumed, KafkaStreams, StreamsBuilder, StreamsConfig}
 
 object $name;format="Camel"$ extends App with LazyLogging {
-
   val config = {
     val properties = new Properties()
     properties.put(StreamsConfig.APPLICATION_ID_CONFIG, "$name;format="normalize"$")
@@ -34,5 +33,8 @@ object $name;format="Camel"$ extends App with LazyLogging {
   })
 
   streams.start()
+}
 
+object $name;format="Camel"$Test {
+  def greeting = "hello"
 }

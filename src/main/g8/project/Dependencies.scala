@@ -7,6 +7,9 @@ object Dependencies {
   val scalaLoggingVersion   = "3.7.2"
   val logbackVersion        = "1.2.3"
   val logbackEncoderVersion = "4.11"
+  val scalaTestVersion      = "3.0.4"
+
+  val scalaTest = "org.scalatest" %% "scalatest" % scalaTestVersion
 
   val kafka          = "org.apache.kafka"           % "kafka-streams"            % kafkaVersion
   val scalaLogging   = "com.typesafe.scala-logging" %% "scala-logging"           % scalaLoggingVersion
@@ -23,5 +26,6 @@ object Dependencies {
   ).map(_ % cirisVersion)
 
   val backendDependencies = Seq(kafka, scalaLogging, logback, logbackEncoder) ++ ciris
+  val testDependencies    = Seq(scalaTest).map(_ % Test)
 
 }
