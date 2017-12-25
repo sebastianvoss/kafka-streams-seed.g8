@@ -1,30 +1,25 @@
 import Dependencies._
 
-lazy val root = (project in file(".")).
-  settings(
-    inThisBuild(List(
-      organization := "com.example",
-      scalaVersion := "2.12.4"
-    )),
-    name := "Hello",
+organization := "com.sebastianvoss",
+scalaVersion := "2.12.4"
+name := "$name$",
 
-    libraryDependencies ++= backendDependencies
+libraryDependencies ++= backendDependencies
 
-    scalafmtOnCompile := true
+scalafmtOnCompile := true
 
-    enablePlugins(JavaAppPackaging, GitVersioning, BuildInfoPlugin)
+enablePlugins(JavaAppPackaging, GitVersioning, BuildInfoPlugin)
 
-    maintainer in Docker := "Sebastian Voss <sv@sebastianvoss.com>"
-    dockerBaseImage := "anapsix/alpine-java:8_server-jre_unlimited"
-    dockerExposedPorts := Seq(8080)
+maintainer in Docker := "Sebastian Voss <sv@sebastianvoss.com>"
+dockerBaseImage := "anapsix/alpine-java:8_server-jre_unlimited"
+dockerExposedPorts := Seq(8080)
 
-    buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
-    buildInfoPackage := "com.sebastianvoss.buildinfo"
-    buildInfoOptions ++= Seq(BuildInfoOption.ToJson, BuildInfoOption.BuildTime)
+buildInfoKeys := Seq[BuildInfoKey](name, version, scalaVersion, sbtVersion)
+buildInfoPackage := "com.sebastianvoss.buildinfo"
+buildInfoOptions ++= Seq(BuildInfoOption.ToJson, BuildInfoOption.BuildTime)
 
-    javaOptions in Universal ++= Seq(
-      "-J-Xmx2048m",
-      "-J-XshowSettings:all",
-      "-Duser.timezone=UTC"
-    )
-  )
+javaOptions in Universal ++= Seq(
+  "-J-Xmx2048m",
+  "-J-XshowSettings:all",
+  "-Duser.timezone=UTC"
+)
