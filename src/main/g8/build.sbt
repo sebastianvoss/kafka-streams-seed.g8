@@ -1,8 +1,8 @@
 import Dependencies._
 
-organization := "com.sebastianvoss",
+organization := "com.sebastianvoss"
 scalaVersion := "2.12.4"
-name := "$name$",
+name := "$name$"
 
 libraryDependencies ++= backendDependencies
 
