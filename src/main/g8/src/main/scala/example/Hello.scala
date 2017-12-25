@@ -1,13 +1,41 @@
 package example
 
-import org.apache.kafka.streams.StreamsBuilder
+import java.util.Properties
 
-object Hello extends Greeting with App {
-
-  val builder = new StreamsBuilder()
-
+import org.apache.kafka.common.serialization.Serdes
+import org.apache.kafka.streams.{
+  Consumed,
+  KafkaStreams,
+  StreamsBuilder,
+  StreamsConfig
 }
 
-trait Greeting {
-  lazy val greeting: String = "hello"
+object Hello extends App {
+
+  val config = {
+    val properties = new Properties()
+    properties.put(StreamsConfig.APPLICATION_ID_CONFIG, "kafka-streams-seed")
+    properties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:29092")
+    properties.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG,
+                   Serdes.String().getClass)
+    properties.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG,
+                   Serdes.String().getClass)
+    properties
+  }
+
+  val builder = new StreamsBuilder()
+  val stringSerde = Serdes.String()
+
+  builder
+    .stream[String, String](
+      "topic1",
+      Consumed.`with`(stringSerde, stringSerde, null, null))
+    .foreach((k, v) => { println(k, v) })
+
+  val topology = builder.build()
+
+  val streams = new KafkaStreams(topology, config)
+
+  streams.start()
+
 }
