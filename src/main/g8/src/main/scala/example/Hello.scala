@@ -1,7 +1,11 @@
 package example
 
+import org.apache.kafka.streams.StreamsBuilder
+
 object Hello extends Greeting with App {
-  println(greeting)
+
+  val builder = new StreamsBuilder()
+
 }
 
 trait Greeting {
