@@ -6,11 +6,11 @@ import com.typesafe.scalalogging.LazyLogging
 import org.apache.kafka.common.serialization.Serdes
 import org.apache.kafka.streams.{Consumed, KafkaStreams, StreamsBuilder, StreamsConfig}
 
-object $appname$ extends App with LazyLogging {
+object $name;format="Camel"$ extends App with LazyLogging {
 
   val config = {
     val properties = new Properties()
-    properties.put(StreamsConfig.APPLICATION_ID_CONFIG, "$appname$")
+    properties.put(StreamsConfig.APPLICATION_ID_CONFIG, "$name;format="normalize"$")
     properties.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:29092")
     properties.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.String().getClass)
     properties.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.String().getClass)
